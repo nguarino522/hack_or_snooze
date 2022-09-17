@@ -14,3 +14,7 @@ Some quick overview of functions implemented:
 - editing stories
 - profile update of name and password
 - "infinite scroll" (scroll to bottom of page loads more stories)
+
+URL to test: https://nguarino522.github.io/hack_or_snooze/
+
+Or you can download a copy and run on your end locally as it will still interact with API successfully!
