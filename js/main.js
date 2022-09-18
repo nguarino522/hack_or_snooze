@@ -66,12 +66,27 @@ console.warn("HEY STUDENT: This program sends many debug messages to" +
 $(start);
 
 
-// scroll to bottom of page, will attempt to load more stories
-$(window).scroll(function() {
-  if($(window).scrollTop() + $(window).height() == $(document).height()) {  
-    if (storyList.stories.length >= 25){
-      let numberOfStoriesToSkip = storyList.stories.length;
-      loadStoriesOnScroll(numberOfStoriesToSkip);
+// scroll to bottom of page on all stories list, will attempt to load more stories infinitely each time scroll down
+$("#all-stories-list").on("mousewheel DOMMouseScroll", function(e){
+  if(typeof e.originalEvent.detail == "number" && e.originalEvent.detail !== 0) {
+    if(e.originalEvent.detail > 0) {
+      if($(window).scrollTop() + $(window).height() == $(document).height()) {  
+        if (storyList.stories.length >= 25){
+          let numberOfStoriesToSkip = storyList.stories.length;
+          loadStoriesOnScroll(numberOfStoriesToSkip);
+        }
+      }
+    } else if(e.originalEvent.detail < 0){
+    }
+  } else if (typeof e.originalEvent.wheelDelta == "number") {
+    if(e.originalEvent.wheelDelta < 0) {
+        if($(window).scrollTop() + $(window).height() == $(document).height()) {  
+          if (storyList.stories.length >= 25){
+            let numberOfStoriesToSkip = storyList.stories.length;
+            loadStoriesOnScroll(numberOfStoriesToSkip);
+          }
+        }
+    } else if(e.originalEvent.wheelDelta > 0) {
     }
   }
 });

@@ -90,4 +90,3 @@ function editProfileClick(evt){
   $userProfile.hide();
   $profileEditForm.show();
 }
-
